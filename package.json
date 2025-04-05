@@ -1,17 +1,16 @@
 {
-  "name": "backend",
+  "name": "Sistema-de-Pedidos",
+  "packageManager": "yarn@4.6.0",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts"
+  "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
+},  
+  "dependencies": {
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "express": "^5.1.0"
   }
 }
