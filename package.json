@@ -8,9 +8,11 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.5.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "express-async-errors": "^3.1.1"
+    "express-async-errors": "^3.1.1",
+    "prisma": "^6.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
