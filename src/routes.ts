@@ -4,7 +4,7 @@ const router = Router();
 
 
 router.get("/teste", (req: Request, res: Response) => {
-   throw  new Error("Erro ao fazer essa requisição")
+   throw  new Error("Erro ao fazer essa requisição ")
     })
 
 export { router };
