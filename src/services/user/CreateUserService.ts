@@ -7,11 +7,8 @@ interface UserRequest{
 
 class CreateUserService{
     async execute({name, email, password}: UserRequest){
-        // Check if user exists
-        // Hash password
-        // Save user to database
-        console.log("User created:", {name, email, password});
-        return {name, email, password};
+        console.log(name);
+        return {name: name};
     }
 }
 

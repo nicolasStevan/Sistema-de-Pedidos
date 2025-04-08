@@ -1,11 +1,9 @@
 import { Router } from "express";
+import { CreateUserController } from './controllers/user/CreateUserController';
 
 const router = Router();
 
-import { CreateUserController } from "./controllers/user/CreateUserController";
-
-
-// Define a route para criar o user
-router.post('/users', new CreateUserController().handle);
+// -- Rotas User --
+router.post("/users", new CreateUserController().handle);
 
 export { router };
