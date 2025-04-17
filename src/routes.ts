@@ -4,21 +4,22 @@ import { AuthUserController } from './controllers/user/AuthUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
 
 import { CreateCategoryController } from './controllers/category/CreateCategoryController'
+import { ListCategoryController } from './controllers/category/ListCategoryController'
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 const router = Router();
 
-// -- Rotas User --
+//routes user --- 
+
 router.post("/users", new CreateUserController().handle);
 
 router.post("/login", new AuthUserController().handle);
 
-router.get('/me',new DetailUserController().handle)
+router.get('/me', new DetailUserController().handle);
 
+router.post('/category', isAuthenticated, new CreateCategoryController().handle);
 
-// rotas category 
-router.post('/category', isAuthenticated, new CreateCategoryController().handle)
-
+router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
 export { router };
