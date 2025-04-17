@@ -20,21 +20,21 @@ export function isAuthenticated(
     const [, token] = authToken.split(" "); // Extrai o token do cabeçalho Authorization
 
     try {
-      const{ sub } = verify(
+      const { sub } = verify(
         token,
         process.env.JWT_SECRET
       )as Payload; // Verifica se o token é válido e decodifica o payload
-    }
+    
 
-    //recupera o id do usuário do token e coloca na requisição
     req.user_id = sub; 
-   
-    return next()
-   
-    catch (err) {
-        return res.status(401).end(); // Se o token for inválido, retorna 401 Unauthorized
 
-        }
+    return next();
+
+    }catch (err) {
+      return res.status(401).end(); // Se o token for inválido, retorna 401 Unauthorized
+
+   
+      }
 
     
 }
