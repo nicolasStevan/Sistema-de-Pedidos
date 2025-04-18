@@ -8,7 +8,13 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
+
+import uploadConfig from "./config/multer";
+
 const router = Router();
+
+const upload = multer(uploadConfig.upload("./tmp"));
+//routes upload ---
 
 //routes user --- 
 
@@ -21,5 +27,7 @@ router.get('/me', new DetailUserController().handle);
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
 
 router.get('/category', isAuthenticated, new ListCategoryController().handle);
+
+router.post('/product', isAuthenticated, new CreateProductController().handle);
 
 export { router };
