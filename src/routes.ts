@@ -8,12 +8,14 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
+import { CreateProductController } from './controllers/product/CreateProductController'
 
-import uploadConfig from "./config/multer";
+
+//import uploadConfig from "./config/multer";
 
 const router = Router();
 
-const upload = multer(uploadConfig.upload("./tmp"));
+//const upload = multer(uploadConfig.upload("./tmp"));
 //routes upload ---
 
 //routes user --- 
@@ -24,10 +26,14 @@ router.post("/login", new AuthUserController().handle);
 
 router.get('/me', new DetailUserController().handle);
 
+
+//- ROTAS CATEGORY
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
 
 router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
+
+//-- ROTAS PRODUCT
 router.post('/product', isAuthenticated, new CreateProductController().handle);
 
 export { router };
