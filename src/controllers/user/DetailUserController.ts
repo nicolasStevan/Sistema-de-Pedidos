@@ -1,21 +1,17 @@
-import {Request, Response} from 'express'
-import { DetailUserService } from '../../services/user/DetailUserService'
-
+import { Request, Response } from "express";
+import { DetailUserService } from "../../services/user/DetailUserService";
 
 class DetailUserController {
-    async handle(req: Request, res: Response) {
-       
-        const user_id = req.user_id // Pega o id do usuário da requisição
-        // Verifica se o id do usuário está presente na requisição
+  async handle(req: Request, res: Response) {
+    const user_id = req.user_id; // Pega o id do usuário da requisição
+    // Verifica se o id do usuário está presente na requisição
 
-   
+    const detailUserService = new DetailUserService();
 
-        const detailUserService = new DetailUserService()
+    const user = await detailUserService.execute(user_id);
 
-        const user = await detailUserService.execute(user_id)
-
-        return res.json(user)
-    }
+    return res.json(user);
+  }
 }
 
-export { DetailUserController }
+export { DetailUserController };

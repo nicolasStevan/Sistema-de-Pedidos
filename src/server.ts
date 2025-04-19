@@ -1,17 +1,13 @@
-import express, { Request, Response, NextFunction } from 'express';
-import cors from 'cors';
-import { router } from './routes';
+import express, { Request, Response, NextFunction } from "express";
+import cors from "cors";
+import { router } from "./routes";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 app.use(router);
 // Middleware para tratamento de erros
-
-
-
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof Error) {
@@ -20,11 +16,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     });
   }
   return res.status(500).json({
-    status: 'error',
-    message: 'Internal server error',
+    status: "error",
+    message: "Internal server error",
   });
-}); 
+});
 
-app.listen(3333, () => 
-  console.log('Servidor rodando na port 3333')
-);
+app.listen(3333, () => console.log("Servidor rodando na port 3333"));

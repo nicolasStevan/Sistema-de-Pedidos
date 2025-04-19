@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import multer from "multer";
+
 import { extname, resolve } from "path";
 
 export default {
@@ -10,9 +11,10 @@ export default {
         filename: (request, file, callback) => {
           const fileHash = crypto.randomBytes(16).toString("hex");
           const fileName = `${fileHash}-${file.originalname}`;
-          callback(null, fileName);
-        },
-      }),
-    };
-  },
-};
+          
+          return callback(null, fileName);
+        }
+      })
+    }
+  }
+}
