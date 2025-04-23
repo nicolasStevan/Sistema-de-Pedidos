@@ -23,7 +23,6 @@ const upload = multer(uploadConfig.upload("./tmp"));
 
 router.post("/users", new CreateUserController().handle)
 
-
 router.post("/login", new AuthUserController().handle);
 
 router.get("/me", new DetailUserController().handle);
@@ -38,11 +37,7 @@ router.post(
 router.get("/category", isAuthenticated, new ListCategoryController().handle);
 
 //-- ROTAS PRODUCT
-router.post(
-  "/product",
-  isAuthenticated,
-  upload.single("file"),
-  new CreateProductController().handle
+router.post(  '/product',  isAuthenticated,  upload.single('banner'),  new CreateProductController().handle
 );
 
 export { router };

@@ -1,35 +1,38 @@
-import { NextFunction, Request, Response } from "express";    // Importa os tipos necessários do Express para tipagem das requisições, respostas e função next
-
-import { verify } from "jsonwebtoken"; // Importa a função 'verify' da biblioteca jsonwebtoken para validar tokens JWT
+import { NextFunction, Request, Response } from "express";
+import { verify } from "jsonwebtoken";
 
 interface TokenPayload {
-    sub: string; // Define a interface do payload do token, que contém apenas o campo 'sub' (ID do usuário)
+    sub: string;
 }
 
-export function isAuthenticated( // Função middleware para verificar se o usuário está autenticado
-    req: Request, // Objeto da requisição
-    res: Response, // Objeto da resposta
-    next: NextFunction) { // Função next para passar para o próximo middleware
+export function isAuthenticated(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
 
-    const authToken = req.headers.authorization; // Obtém o token do cabeçalho Authorization
+    // receber o token 
+    const authToken = req.headers.authorization;
 
     if (!authToken) {
-       return res.status(401).end(); // Se não houver token, retorna 401 Unauthorized
+        return res.status(401).end();
     }
 
-    const [, token] = authToken.split(" "); // Extrai o token do formato "Bearer token"
+    const [, token] = authToken.split(" ");
 
     try {
-      const { sub } = verify( // Verifica e decodifica o token JWT usando a chave secreta
-        token,
-        process.env.JWT_SECRET
-      ) as Payload; // Faz o cast para o tipo Payload (esse nome está diferente da interface definida)
+      // validar token 
+        const { sub } = verify(
+            token,
+            process.env.JWT_SECRET
+        ) as TokenPayload;
 
-    req.user_id = sub; // Adiciona o ID do usuário (sub) no objeto da requisição para uso posterior
+        //recuperar  o id do token e colocar dentro de uma variavel user_id dentro do  req  
+        req.user_id = sub;
 
-    return next(); // Continua para o próximo middleware ou rota
+        return next();
 
     } catch (err) {
-      return res.status(401).end(); // Se o token for inválido ou der erro, retorna 401 Unauthorized
+        return res.status(401).end();
     }
 }
