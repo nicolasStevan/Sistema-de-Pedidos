@@ -8,9 +8,10 @@ import { DetailUserController } from "./controllers/user/DetailUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 
+import { CreateProductController } from "./controllers/product/CreateProductController";
+
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
-import { CreateProductController } from "./controllers/product/CreateProductController";
 
 import uploadConfig from "./config/multer";
 
@@ -25,7 +26,7 @@ router.post("/users", new CreateUserController().handle)
 
 router.post("/login", new AuthUserController().handle);
 
-router.get("/me", new DetailUserController().handle);
+router.get("/me", isAuthenticated, new DetailUserController().handle);
 
 //- ROTAS CATEGORY
 router.post(
