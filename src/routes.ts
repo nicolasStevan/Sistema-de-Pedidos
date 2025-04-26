@@ -11,6 +11,9 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
 
+
+
+
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 import uploadConfig from "./config/multer";
@@ -48,7 +51,7 @@ router.post(
 router.get(
   "/category/product",
   isAuthenticated,
-  new ListCategoryController().handle
+  new ListByCategoryController().handle
 );
 
 export { router };
