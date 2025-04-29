@@ -1,4 +1,9 @@
 import prismaClient from "../../prisma";
+
+import { Product } from "@prisma/client";
+
+
+
 interface OrderRequest {
   table: string;
   name: string;
