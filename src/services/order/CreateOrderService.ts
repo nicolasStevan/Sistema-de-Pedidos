@@ -15,7 +15,7 @@ class CreateOrderService {
     const order = await prismaClient.order.create({
       data: {
         table: table,
-        name: name,
+        name: name
       },
     });
 
