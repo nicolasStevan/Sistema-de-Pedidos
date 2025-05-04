@@ -29,7 +29,7 @@ import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 import uploadConfig from "./config/multer";
 
-const router = Router();// criando as rotas do sistema
+const router = Router(); // criando as rotas do sistema
 
 //routes upload --
 const upload = multer(uploadConfig.upload("./tmp")); // configurando o multer para salvar os arquivos na pasta tmp
@@ -52,8 +52,17 @@ router.post(
 router.get("/category", isAuthenticated, new ListCategoryController().handle); // listar categorias
 
 //-- ROTAS PRODUCT
-router.post("/product",isAuthenticated,upload.single("banner"),new CreateProductController().handle); // criar produto
-router.get("/category/product",isAuthenticated,new ListByCategoryController().handle); // listar produtos por categoria
+router.post(
+  "/product",
+  isAuthenticated,
+  upload.single("banner"),
+  new CreateProductController().handle
+); // criar produto
+router.get(
+  "/category/product",
+  isAuthenticated,
+  new ListByCategoryController().handle
+); // listar produtos por categoria
 
 //-- ROTAS ORDER
 
@@ -64,14 +73,26 @@ router.delete("/order", isAuthenticated, new RemoveOrderController().handle); //
 //-- ROTAS ITEM
 router.post("/order/add", isAuthenticated, new AddItemController().handle); // adicionar item
 
-router.delete("/order/remove", isAuthenticated, new RemoveItemController().handle); // remover item
+router.delete(
+  "/order/remove",
+  isAuthenticated,
+  new RemoveItemController().handle
+); // remover item
 
 router.put("/order/send", isAuthenticated, new SendOrderController().handle); // enviar pedido
 
 router.get("/orders", isAuthenticated, new ListOrdersController().handle); // listar pedidos
 
-router.get("/order/detail", isAuthenticated, new DetailOrderController().handle); // detalhes do pedido
+router.get(
+  "/order/detail",
+  isAuthenticated,
+  new DetailOrderController().handle
+); // detalhes do pedido
 
-router.put("/order/finish", isAuthenticated, new FinishOrderController().handle); // finalizar pedido
+router.put(
+  "/order/finish",
+  isAuthenticated,
+  new FinishOrderController().handle
+); // finalizar pedido
 
 export { router };
