@@ -23,6 +23,8 @@ import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
 import { DetailOrderController } from "./controllers/order/DetailOrderController";
 
+import { FinishOrderController } from "./controllers/order/FinishOrderController";
+
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 import uploadConfig from "./config/multer";
@@ -69,5 +71,7 @@ router.put("/order/send", isAuthenticated, new SendOrderController().handle); //
 router.get("/orders", isAuthenticated, new ListOrdersController().handle); // listar pedidos
 
 router.get("/order/detail", isAuthenticated, new DetailOrderController().handle); // detalhes do pedido
+
+router.put("/order/finish", isAuthenticated, new FinishOrderController().handle); // finalizar pedido
 
 export { router };

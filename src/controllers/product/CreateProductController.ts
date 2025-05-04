@@ -15,11 +15,12 @@ class CreateProductController{
       const { filename: banner } = req.file;
 
       const product = await createProductService.execute({
+        
         name,
         price: Number(price),
         description,
         banner,
-        category_id
+        categoryId
       });
   
       return res.json(product)
