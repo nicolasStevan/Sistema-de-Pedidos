@@ -1,0 +1,26 @@
+.containerCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  
+    .amigo {
+      color: #ff6347; // vermelho tomate
+    }
+  
+    .pizza {
+      color: #ffa500; // laranja
+    }
+  
+    p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+  

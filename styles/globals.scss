@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+     --white: #ffffff;
+    --black: #000000;
+
+    --primary: #007bff;
+    --primary-light: #007bff33;
+    --primary-dark: #0056b3;
+    --secondary: #6c757d;
+    --secondary-light: #6c757d33;
+    --secondary-dark: #5a6268;
+    --success: #28a745;
+    --success-light: #28a74533;
+    --success-dark: #218838;
+    --danger: #dc3545;
+    --danger-light: #dc354533;
+    --danger-dark: #c82333;
+    --warning: #ffc107;
+    --warning-light: #ffc10733;
+    --warning-dark: #e0a800;
+    --info: #17a2b8;
+    --info-light: #17a2b833;
+    --info-dark: #138496;
+
+    --font-size: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+body{
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: var(--font-size);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body, input, textarea, select,button{
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size);
+}
+
+@media (max-width: 768px){
+    :root{
+        --font-size: 14px;
+    }
+}
+@media (max-width: 576px){
+    :root{
+        --font-size: 12px;
+    }
+}   
