@@ -3,6 +3,8 @@ import styles from '../../styles/home.module.scss';
 import { Input } from '../components/ui/input/index'
 import { Button } from '../components/ui/button/index';
 
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <>
@@ -32,8 +34,17 @@ export default function Home() {
               Acessar
               </Button>
 
-              <a href="" className={styles.text}>Não tem uma conta? Cadastre-se</a>
-              <a href="" className={styles.text}>Esqueci minha senha</a>
+              <Link href="/register">
+                <Button type='button' >
+                  Criar conta
+                </Button>
+              </Link>
+            
+              <Link href="/forgot">
+                <Button type='button' >
+                  Esqueci minha senha
+                </Button>
+              </Link>
 
             </form>
         </div>
