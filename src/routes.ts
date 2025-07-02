@@ -55,7 +55,7 @@ router.get("/category", isAuthenticated, new ListCategoryController().handle); /
 router.post(
   "/product",
   isAuthenticated,
-  upload.single("banner"),
+  upload.single("file"),
   new CreateProductController().handle
 ); // criar produto
 router.get(

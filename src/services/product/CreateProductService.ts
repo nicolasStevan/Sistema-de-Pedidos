@@ -9,13 +9,17 @@ interface ProductRequest {
 }
 
 class CreateProductService {
-  async execute({    name,    price,    description,    banner,    category_id,  }: ProductRequest) {
+  async execute({ name, price, description, banner, category_id }: ProductRequest) {
+    if (!name || !price || !description || !banner || !category_id) {
+      throw new Error("Campos obrigatórios não preenchidos.");
+    }
+
     const product = await prismaClient.product.create({
       data: {
-        name: name,
-        price: price,
-        description: description,
-        image: banner, // se você tiver esse campo no banco
+        name,
+        price,
+        description,
+        image: banner,
         category: {
           connect: {
             id: category_id,
